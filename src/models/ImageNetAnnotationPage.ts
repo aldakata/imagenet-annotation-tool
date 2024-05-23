@@ -9,3 +9,4 @@ export interface ImageNetAnnotationPage {
   endedAt?: number;
   annotations: any[];
 }
+

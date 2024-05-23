@@ -7,6 +7,7 @@ import { Point } from "./Point";
 import { ImageNetHIT } from "./ImageNetHIT";
 import { ImageNetAnnotation } from "./ImageNetAnnotation";
 import { ImageNetAnnotationPage } from "./ImageNetAnnotationPage";
+import {TimePageAnnotation} from "./TimePageAnnotation";
 
 export type {
   Class,
@@ -15,4 +16,5 @@ export type {
   ImageNetHIT,
   ImageNetAnnotation,
   ImageNetAnnotationPage,
+  TimePageAnnotation,
 };

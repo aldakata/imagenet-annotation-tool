@@ -16,7 +16,7 @@ export const Instruction = styled.div`
   text-align: center;
   padding: 16px;
   font-size: 18px;
-  width: 1028px;
+  // width: 1028px;
   margin: 0 auto;
   .term {
     color: red;

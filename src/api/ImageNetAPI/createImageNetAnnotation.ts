@@ -1,6 +1,8 @@
 // ImageNet Annotation Tool - FE
 // Copyright (c) 2022-present NAVER Corp.
 // MIT License
+
+// TODO: I might not need this at all.
 import API from "@aws-amplify/api";
 import { ImageNetAnnotation, ImageNetHIT } from "@models";
 

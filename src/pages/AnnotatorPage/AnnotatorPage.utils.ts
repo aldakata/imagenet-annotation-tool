@@ -7,28 +7,28 @@ import { Class, Image, ImageNetHIT } from "@models";
 import { AnnotationsStateType, AppStateType } from "@stores";
 import { getRandomElement } from "@utils";
 
-export const chooseOneOfClasses = (
-  classes: Required<Class>[],
+export const makeid = () => {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  let counter = 0;
+  while (counter < 7) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    counter += 1;
+  }
+  return result;
+};
+
+export const chooseOneOfClasses = (classes: 
+  Required<Class>[], 
   app: AppStateType
 ): Required<Class> => {
-  const { version } = app;
-  let candidates = classes.filter(
-    (each) => !app.blacklistClasses.includes(each.id)
-  );
+  console.log("DEBUG submitcount",app.submitCount);
 
-  // In development mode, Nudity class will be excluded ------------------------
-  if (process.env.NODE_ENV === "development")
-    candidates = candidates.filter((each) => !each.synset.includes("cock"));
-  // ---------------------------------------------------------------------------
 
-  const minAnnotationCount = Math.min(
-    ...candidates.map((each) => each.annotationCount[version])
-  );
-  candidates = candidates.filter(
-    (each) => each.annotationCount[version] === minAnnotationCount
-  );
-  return getRandomElement(candidates);
+  return classes[app.submitCount-1];
 };
+
 
 const shuffle = <T extends any>(array: T[]): T[] => {
   const newArray = [...array];
@@ -38,6 +38,8 @@ const shuffle = <T extends any>(array: T[]): T[] => {
   }
   return newArray;
 };
+
+
 
 export const chooseSomeOfImages = (
   images: Required<Image>[],
@@ -88,58 +90,4 @@ export const projectAnnotationsForImageNet = (
     })),
     imageID: annotation.imageID as string,
   }));
-};
-
-interface ValidateWorkerParams {
-  app: AppStateType;
-  imageNetHit: ImageNetHIT;
-  imageNetAnnotationId: string;
-}
-interface ValidateWorkerResult {
-  isDone: boolean;
-  isSameAssignment: boolean;
-  initialSubmitCount: number;
-  imageNetAnnotationId: string;
-}
-export const validateWorker = async (params: ValidateWorkerParams) => {
-  const { app, imageNetHit, imageNetAnnotationId } = params;
-  if (
-    typeof app.hitDatasetName !== "string" ||
-    typeof app.imageNetHitId !== "string" ||
-    typeof app.workerId !== "string"
-  ) {
-    alert("hitDatasetName, imageNetHitId, workerId are not found");
-    throw new Error("hitDatasetName, imageNetHitId, workerId are not found");
-  }
-
-  const result: ValidateWorkerResult = {
-    isDone: false,
-    isSameAssignment: false,
-    initialSubmitCount: app.submitCount,
-    imageNetAnnotationId,
-  };
-
-  const imageNetAnnotations = await searchImageNetAnnotation({
-    hitDatasetName: app.hitDatasetName,
-    imageNetHitID: app.imageNetHitId,
-    workerID: app.workerId,
-  });
-
-  // If the worker has already done this hitDatasetName,
-  const doneOne = imageNetAnnotations.find(({ isDone }) => isDone);
-  if (imageNetHit.isUnique && !!doneOne) {
-    result.isDone = true;
-    result.isSameAssignment = doneOne.imageNetHitID === imageNetHit.id;
-    return result;
-  }
-
-  // If the worker has already submitted the annotation,
-  const sameOne = imageNetAnnotations.find(
-    ({ imageNetHitID }) => imageNetHitID === imageNetHit.id
-  );
-  if (sameOne) {
-    result.initialSubmitCount = sameOne.pageCount + 1;
-    result.imageNetAnnotationId = sameOne.id;
-  }
-  return result;
 };

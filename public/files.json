@@ -1,0 +1,47 @@
+{
+    "array":[
+      {  
+         "id":0,
+         "term":"Chicken",
+         "wnid":"n01514859",
+         "n":20,
+         "description":"",
+         "wiki":"https://en.wikipedia.org/wiki/Chicken"
+      },
+      {  
+         "id":1,
+         "wnid":"n01641577",
+         "term":"Frog",
+         "n":20,
+         "description":"",
+         "wiki":"https://en.wikipedia.org/wiki/American_bullfrog"
+      },
+      {  
+         "id":2,
+         "wnid":"n02093256",
+         "n":20,
+         "description": "",
+         "term": "Dog",
+         "wiki":"https://en.wikipedia.org/wiki/Staffordshire_Bull_Terrier"
+      },
+      {  
+         "id":3,
+         "wnid":"n03680355",
+         "n":20,
+         "description":"Typically low, lace-less shoes. The style which is most commonly seen, known as a loafer, slippers, or penny loafers in American culture, has a moccasin construction",
+         "term":"Loafer",
+         "wiki":"https://en.wikipedia.org/wiki/Slip-on_shoe"
+      },
+      {  
+          "id":4,
+          "wnid":"n09428293",
+          "n":20,
+          "description":"The area where land meets the ocean, or as a line that forms the boundary between the land and the coastline",
+          "term":"Seashore, coast, seacoast, sea-coast",
+          "wiki":"https://en.wikipedia.org/wiki/Coast"
+       }
+
+
+
+    ]
+ }

@@ -6,6 +6,7 @@ import {
   AnnotationsStateType,
   AnnotationState,
   AnnotationStateType,
+  AnnotationStateJSONType
 } from "./AnnotationsState";
 import AppState, { AppStateType } from "./AppState";
 import ImageNetState, { ImageNetStateType } from "./ImageNetState";
@@ -24,4 +25,5 @@ export type {
   AnnotationsStateType,
   UserStateType,
   ImageNetStateType,
+  AnnotationStateJSONType,
 };

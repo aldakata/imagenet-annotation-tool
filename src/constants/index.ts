@@ -2,8 +2,8 @@
 // Copyright (c) 2022-present NAVER Corp.
 // MIT License
 export const IMAGE_NUMBER = process.env.NODE_ENV === "production" ? 48 : 4;
-export const TOTAL_SUBMIT_COUNT =
-  process.env.NODE_ENV === "production" ? 10 : 2;
+export const TOTAL_SUBMIT_COUNT = 5;
+export const NUMBER_OF_WRONG_SAMPLES_PER_CLASS = 7;
 
 export type Page = "annotator" | "admin";
 

@@ -1,9 +1,11 @@
 // ImageNet Annotation Tool - FE
 // Copyright (c) 2022-present NAVER Corp.
 // MIT License
-import API from "@aws-amplify/api";
 import { AnnotationVersion } from "@constants";
 import { AnnotationsStateType } from "@stores";
+
+var fs = require('fs');
+
 
 export default async (
   annotations: AnnotationsStateType,
@@ -15,6 +17,11 @@ export default async (
     hitID?: string;
   }
 ) => {
+  const dir = "public/annotations/"+extraData.assignmentID;
+  
+  if (!fs.existsSync(dir)){
+      fs.mkdirSync(dir);
+  }
   const { annotatorID, version, workerID, assignmentID, hitID } = extraData;
 
   const body = {
@@ -43,12 +50,10 @@ export default async (
       workerID,
       assignmentID,
       hitID,
-      imageID: annotation.imageID as string,
+      imageID: annotation.imageID,
       version,
     })),
   };
-
-  await API.post("ImageNetAPI", "/api/annotations", {
-    body,
-  });
+  // TODO Write as xml locally.
+  console.log("Annotations: ", body);
 };

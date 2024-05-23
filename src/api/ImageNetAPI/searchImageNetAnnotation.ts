@@ -1,7 +1,6 @@
 // ImageNet Annotation Tool - FE
 // Copyright (c) 2022-present NAVER Corp.
 // MIT License
-import API from "@aws-amplify/api";
 import { ImageNetAnnotation } from "@models";
 
 interface ImageNetAnnotationWithPageCount extends ImageNetAnnotation {
@@ -17,14 +16,6 @@ interface SearchImageNetAnnotationsRequest {
 export default async (request: SearchImageNetAnnotationsRequest) => {
   const { hitDatasetName, imageNetHitID, workerID } = request;
 
-  const hit: ImageNetAnnotationWithPageCount[] = await API.get(
-    "ImageNetAPI",
-    `/api/imagenet/${hitDatasetName}/hits/${imageNetHitID}/annotations`,
-    {
-      queryStringParameters: {
-        workerID,
-      },
-    }
-  );
+  const hit: ImageNetAnnotationWithPageCount[] = [] as ImageNetAnnotationWithPageCount[];
   return hit;
 };

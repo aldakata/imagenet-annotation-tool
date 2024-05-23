@@ -6,6 +6,7 @@ import { AnnotationCount } from "@constants";
 export interface Image {
   id: string;
   url: string;
+  belongsToThisClass: boolean;
   originalUrl?: string;
   isValid?: boolean;
   classID?: string;

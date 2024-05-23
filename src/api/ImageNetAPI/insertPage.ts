@@ -1,7 +1,9 @@
 // ImageNet Annotation Tool - FE
 // Copyright (c) 2022-present NAVER Corp.
 // MIT License
-import API from "@aws-amplify/api";
+
+// I might not need this.
+
 import { ImageNetAnnotationPage, ImageNetHIT } from "@models";
 
 interface InsertPageParams {
@@ -16,16 +18,7 @@ export default async (params: InsertPageParams) => {
 
   const endedAt = new Date().getTime();
 
-  const hit: ImageNetHIT = await API.put(
-    "ImageNetAPI",
-    `/api/imagenet/${hitDatasetName}/annotations/${imageNetAnnotationId}`,
-    {
-      body: {
-        page: { ...page, endedAt },
-        endedAt,
-        isDone,
-      },
-    }
-  );
+  const hit: ImageNetHIT = {} as ImageNetHIT;
   return hit;
 };
+  

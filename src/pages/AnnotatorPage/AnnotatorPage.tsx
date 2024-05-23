@@ -20,30 +20,13 @@ import {
 
 const AnnotatorPage = () => {
   const [app, setApp] = useRecoilState(AppState);
-  const { state, createHIT, handleError, submitHandler, term } = useHandler();
-
+  const { state, createHIT, handleError, submitHandler, submitPageAnnotations, term } = useHandler();
   useLayoutEffect(() => {
     createHIT();
     setApp((app) => ({ ...app, startedAt: new Date().getTime() }));
     return () => undefined;
-  }, []);
+  }, [app.submitCount]);
 
-  if (app.surveyCode) {
-    return (
-      <Container>
-        <h1>Thank you!</h1>
-        <h2>
-          Your survey code is{" "}
-          <span style={{ color: "red" }}>{app.surveyCode}</span>
-        </h2>
-        <p>
-          You&rsquo;ve submitted all annotations.
-          <br />
-          Put this survey code in AWS Mturk survey form.
-        </p>
-      </Container>
-    );
-  }
 
   if (app.error) {
     return (
@@ -56,7 +39,27 @@ const AnnotatorPage = () => {
 
   return (
     <Container>
-      {app.imageNetClass.id.length > 0 && (
+      {/* {console.log(
+        "DEBUG AnnotatorPage: imageNetClass.id.length", app.imageNetClass.id.length, 
+        "loading?", state.loading, 
+        // "workerId" ,app.workerId, 
+        "submitCount", app.submitCount, 
+        "totalSubmitCount", app.totalSubmitCount,
+        "currentImages", app.currentImages,
+        // "assignmentId", app.assignmentId
+        )} */}
+      {app.isDone && (
+      <Instruction>
+          
+          <div className="term">You are finished!</div>
+          <div className="italic">
+            (: Great job :)
+          </div>
+          <img src="end.png"/>
+        </Instruction>
+      )}
+      {app.imageNetClass.id.length > 0 && !app.isDone && (
+
         <Instruction>
           <div className="bold">
             Which of these images contain at least one object of type
@@ -77,18 +80,15 @@ const AnnotatorPage = () => {
           <div>
             If you are unsure about the object meaning, please consult the
             following Wikipedia page(s) or google the objects yourself:{" "}
-            {app.imageNetClass.wikipedia.map((page) => (
-              <div key={page}>
-                <a href={page} target="_blank" rel="noreferrer">
-                  {page}
+              <div key="url">
+                <a href={app.imageNetClass.wikipedia} target="_blank" rel="noreferrer">
+                  To Wikipedia 
                   <img
                     src="https://img.icons8.com/material-two-tone/24/000000/external-link.png"
                     alt="External Link"
                   />
                 </a>
-                (open in new tab)
               </div>
-            ))}
           </div>
           <div>
             If it is impossible to complete a HIT due to missing data or other
@@ -96,18 +96,17 @@ const AnnotatorPage = () => {
           </div>
         </Instruction>
       )}
-
       {state.loading ? (
         <Loading>
           <span />
           Image Data Loading...
         </Loading>
       ) : app.currentImages?.length === 0 ? (
-        <ErrorText>
-          <h1>Error</h1>
-          <div>{state.error}</div>
+          <ErrorText>
+            <h1>Thanks!</h1>
+            <div>:3</div>
         </ErrorText>
-      ) : (
+      ) : (!app.isDone && (
         <Grid>
           {app.currentImages.map((imageNetImage) => (
             <AnnotationComponent
@@ -115,15 +114,26 @@ const AnnotatorPage = () => {
               imageNetImage={imageNetImage}
               handleError={handleError}
             />
-          ))}
-        </Grid>
+          ))
+          }
+        </Grid>)
       )}
-      <SubmitButton type="button" onClick={submitHandler}>
-        {state.submitting ? "Submitting..." : "Submit"}
-      </SubmitButton>
-      <div>
-        {app.submitCount} page(s) / {app.totalSubmitCount} pages
-      </div>
+      {app.isDone ? (
+            <SubmitButton type="button" onClick={submitPageAnnotations}>
+            {state.submitting ? "Saving..." : "Finish and save"}
+            </SubmitButton>
+            )
+            :
+            (
+              <SubmitButton type="button" onClick={submitHandler}>
+              {state.submitting ? "Submitting..." : "Submit"}
+              </SubmitButton>
+              
+            )
+      }
+      {!app.isDone && (<div>
+            {app.submitCount} page(s) / {app.totalSubmitCount} pages
+        </div>)}
 
       {state.submitting && (
         <OverlayLoading>
@@ -133,7 +143,7 @@ const AnnotatorPage = () => {
 
       {app.debugMode && (
         <DisplayJSON>
-          <code>{JSON.stringify(app, null, 2)}</code>
+          <code>{JSON.stringify(app)}</code>
         </DisplayJSON>
       )}
     </Container>

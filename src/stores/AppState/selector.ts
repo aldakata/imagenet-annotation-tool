@@ -20,9 +20,7 @@ const AppSelector = selector<AppSelectorType>({
       "POINTER_NO_ORIGINAL",
     ].includes(app.version);
 
-    const isForImageNetHIT =
-      typeof app.hitDatasetName !== "undefined" &&
-      typeof app.imageNetHitId !== "undefined";
+    const isForImageNetHIT = true;
 
     return {
       ...app,

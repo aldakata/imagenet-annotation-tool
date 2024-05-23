@@ -3,9 +3,10 @@
 // MIT License
 import AnnotationAtomFamily from "./atomFamily";
 import AnnotationsSelector from "./selector";
-import { AnnotationAtomType, AnnotationsSelectorType } from "./type";
+import { AnnotationAtomType, AnnotationsSelectorType, AnnotationAtomJSONType } from "./type";
 
 export const AnnotationsState = AnnotationsSelector;
 export const AnnotationState = AnnotationAtomFamily;
 export type AnnotationStateType = AnnotationAtomType;
 export type AnnotationsStateType = AnnotationsSelectorType;
+export type AnnotationStateJSONType = AnnotationAtomJSONType;

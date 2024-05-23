@@ -8,6 +8,7 @@ import getImageNetHit from "./ImageNetAPI/getImageNetHit";
 import getImages from "./ImageNetAPI/getImages";
 import insertPage from "./ImageNetAPI/insertPage";
 import searchImageNetAnnotation from "./ImageNetAPI/searchImageNetAnnotation";
+import savePageAnnotations from "./ImageNetAPI/savePageAnnotations";
 
 export {
   getClasses,
@@ -17,4 +18,5 @@ export {
   createImageNetAnnotation,
   insertPage,
   searchImageNetAnnotation,
+  savePageAnnotations,
 };

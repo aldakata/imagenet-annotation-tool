@@ -43,3 +43,7 @@ export type AnnotationAtomType = {
 };
 
 export type AnnotationsSelectorType = AnnotationAtomType[];
+
+export interface AnnotationAtomJSONType extends AnnotationAtomType{
+  assignmentId: string | undefined;
+}

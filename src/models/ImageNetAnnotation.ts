@@ -5,8 +5,6 @@ import { AnnotationVersion } from "@constants";
 import { ImageNetAnnotationPage } from "@models";
 
 export interface ImageNetAnnotation {
-  hitDatasetName?: string;
-  imageNetHitID?: string;
   id: string;
   annotatorID: string;
   workerID?: string;
@@ -14,6 +12,4 @@ export interface ImageNetAnnotation {
   assignmentID?: string;
   version: AnnotationVersion;
   createdAt?: string;
-  pages?: ImageNetAnnotationPage[];
-  isDone?: boolean;
 }

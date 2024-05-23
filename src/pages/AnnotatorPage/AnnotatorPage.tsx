@@ -4,7 +4,7 @@
 import { AnnotationComponent } from "@components";
 import { AppState } from "@stores";
 import { capitalize } from "@utils";
-import React, { useLayoutEffect } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import useHandler from "./AnnotatorPage.handler";
 import {
@@ -20,6 +20,7 @@ import {
 
 const AnnotatorPage = () => {
   const [app, setApp] = useRecoilState(AppState);
+  const [finished, setFinished] = useState(false);
   const { state, createHIT, handleError, submitHandler, submitPageAnnotations, term } = useHandler();
   useLayoutEffect(() => {
     createHIT();
@@ -118,17 +119,21 @@ const AnnotatorPage = () => {
           }
         </Grid>)
       )}
-      {app.isDone ? (
-            <SubmitButton type="button" onClick={submitPageAnnotations}>
-            {state.submitting ? "Saving..." : "Finish and save"}
+      {app.isDone && !finished ? (
+            <SubmitButton type="button" onClick={
+              () => {
+                submitPageAnnotations;
+                setFinished(true);
+              }
+              }>
+            {state.submitting ? "Saving..." : "Pressing this button you consent to process your data."}
             </SubmitButton>
             )
             :
             (
               <SubmitButton type="button" onClick={submitHandler}>
               {state.submitting ? "Submitting..." : "Submit"}
-              </SubmitButton>
-              
+              </SubmitButton> 
             )
       }
       {!app.isDone && (<div>

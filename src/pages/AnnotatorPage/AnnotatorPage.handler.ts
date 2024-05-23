@@ -38,6 +38,7 @@ const useHandler = () => {
     loading: true,
     submitting: false,
     error: null,
+    finished: false,
   });
   useBeforeUnload(true);
 
@@ -178,7 +179,7 @@ const useHandler = () => {
     } catch (error: any) {
       alert(error ?? "Unknown error");
     }finally{
-      setState((state) => ({ ...state, submitting: false }));
+      setState((state) => ({ ...state, submitting: false, finished: true}));
     }
   });
 

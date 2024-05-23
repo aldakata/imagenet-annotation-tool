@@ -48,7 +48,7 @@ const App = () => {
           </div>
           <div className="bold">What is the study process?</div>
           <div className="gray">
-            You will be presented with a <strong>keyword</strong>, a brief description, and a series of images. 
+            You will be presented with a <strong>keyword</strong>, a brief description, and a <strong>series of images</strong>. 
             Your task to click on the images that contain objects related to the keyword, regardless of
             occlusions, other objects, or clutter or text in the scene.
           </div>

@@ -51,7 +51,6 @@ const AnnotatorPage = () => {
         )} */}
       {app.isDone && (
       <Instruction>
-          
           <div className="term">You are finished!</div>
           <div className="italic">
             (: Great job :)
@@ -119,22 +118,17 @@ const AnnotatorPage = () => {
           }
         </Grid>)
       )}
-      {app.isDone && !finished ? (
-            <SubmitButton type="button" onClick={
-              () => {
-                submitPageAnnotations;
-                setFinished(true);
-              }
-              }>
-            {state.submitting ? "Saving..." : "Pressing this button you consent to process your data."}
-            </SubmitButton>
-            )
-            :
-            (
-              <SubmitButton type="button" onClick={submitHandler}>
-              {state.submitting ? "Submitting..." : "Submit"}
-              </SubmitButton> 
-            )
+      {app.isDone? (! state.finished &&
+          <SubmitButton type="button" onClick={submitPageAnnotations}>
+          {state.submitting ? "Saving..." : "Pressing this button you consent to process your data."}
+          </SubmitButton>
+          )
+          :
+          (
+            <SubmitButton type="button" onClick={submitHandler}>
+            {state.submitting ? "Submitting..." : "Submit"}
+            </SubmitButton> 
+          )
       }
       {!app.isDone && (<div>
             {app.submitCount} page(s) / {app.totalSubmitCount} pages

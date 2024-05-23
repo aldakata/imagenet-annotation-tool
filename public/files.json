@@ -5,7 +5,7 @@
          "term":"Chicken",
          "wnid":"n01514859",
          "n":20,
-         "description":"",
+         "description":"A large and round short-winged bird, domesticated. Most chickens are raised for food, providing meat and eggs.",
          "wiki":"https://en.wikipedia.org/wiki/Chicken"
       },
       {  
@@ -13,14 +13,14 @@
          "wnid":"n01641577",
          "term":"Frog",
          "n":20,
-         "description":"",
+         "description":"Has a stout body, protruding eyes, anteriorly-attached tongue, limbs folded underneath. Their skin varies in colour from well-camouflaged dappled brown, grey and green to vivid patterns of bright red or yellow and black to show toxicity and ward off predators.",
          "wiki":"https://en.wikipedia.org/wiki/American_bullfrog"
       },
       {  
          "id":2,
          "wnid":"n02093256",
          "n":20,
-         "description": "",
+         "description": "The dog (Canis familiaris or Canis lupus familiaris) is a domesticated descendant of the wolf.",
          "term": "Dog",
          "wiki":"https://en.wikipedia.org/wiki/Staffordshire_Bull_Terrier"
       },

@@ -7,6 +7,14 @@ import { RecoilRoot } from "recoil";
 import App from "./App";
 import "./index.css";
 
+// replace console.* for disable log on production
+if (process.env.NODE_ENV === 'production') {
+  console.log = () => {}
+  console.error = () => {}
+  console.debug = () => {}
+}
+
+
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>

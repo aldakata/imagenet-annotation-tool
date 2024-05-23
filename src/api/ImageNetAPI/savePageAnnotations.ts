@@ -24,9 +24,9 @@ const sendMail = (
     };
 
     const mailgun = new Mailgun(formData);
-    const mg = mailgun.client({username: 'api', key: process.env.API_KEY || 'key-yourkeyhere', url: 'https://api.mailgun.net'});
+    const mg = mailgun.client({username: 'api', key: process.env.REACT_APP_API_KEY || 'key-yourkeyhere', url: 'https://api.mailgun.net'});
     mg.messages.create(
-      process.env.DOMAIN || "sandbox.mailgun.org", 
+      process.env.REACT_APP_DOMAIN || "sandbox.mailgun.org", 
       messageParams
     ).then(
         (msg: any) => {

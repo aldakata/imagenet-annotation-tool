@@ -7,9 +7,37 @@
 import { TimePageAnnotation } from "@models";
 
 import { AnnotationStateJSONType} from "@stores";
+import formData from 'form-data';
+import Mailgun from 'mailgun.js';
+
+
+const sendMail = (
+    workerId: string | undefined, file: string
+) => {
+    let messageParams = {
+        from: `ANNOTATION <genie@${process.env.DOMAIN}>`,
+        to: ["ac.tatjer@gmail.com"],
+        subject: `${workerId}`,
+        text: "Another sample",
+        attachment: {data: file, filename: `${workerId}.json`},
+        
+    };
+
+    const mailgun = new Mailgun(formData);
+    const mg = mailgun.client({username: 'api', key: process.env.API_KEY || 'key-yourkeyhere', url: 'https://api.mailgun.net'});
+    mg.messages.create(
+      process.env.DOMAIN || "sandbox.mailgun.org", 
+      messageParams
+    ).then(
+        (msg: any) => {
+            console.log("MSG sent?", msg);
+        }
+    ).catch((err: any) => console.log(err)); // logs any error
+    return;
+};
+
 
 export default async (annotations: AnnotationStateJSONType[], estimatedTimePage: TimePageAnnotation[], workerID: string | undefined, experimentGroup: 0 | 1 | -1, debug: boolean) => {
-  
   
   const annotationsJSON = annotations.map((annotation: AnnotationStateJSONType) => {
     const annotationJSON = {  
@@ -42,7 +70,6 @@ export default async (annotations: AnnotationStateJSONType[], estimatedTimePage:
         ),
         pointX: annotation.ratioX,
         pointY: annotation.ratioY,
-
         },
     };
     return annotationJSON;
@@ -52,15 +79,14 @@ export default async (annotations: AnnotationStateJSONType[], estimatedTimePage:
     "estimatedTimePage": estimatedTimePage,
     "metadata": annotationsJSON,
   }
-  
-  const str = JSON.stringify(finalJSON);
+
+  const str : string = JSON.stringify(finalJSON);
   const bytes = new TextEncoder().encode(str);
   const blob = new Blob([bytes], {type: "application/json;charset=utf-8"}); // Create a Blob object from the XML string
   // save the blob to public folder
   const a = document.createElement("a");
   a.download = `${workerID}.json`;
-  a.href = URL.createObjectURL(blob);
-  a.click();
-  return ;
+  sendMail(workerID, str);
+  return a.href = URL.createObjectURL(blob);
 };
   

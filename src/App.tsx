@@ -44,7 +44,7 @@ const App = () => {
               <p>This experiment is lead by Albert Catalan Tatjer (albert.catalan-tatjer[at]student.uni-tuebingen.de)</p>
               <p>&nbsp;</p>
               <h2><strong>Instructions</strong></h2>
-                <p>- This HIT contains <strong>5 pages</strong> of image selection tasks.</p>
+                <p>- This experiment contains <strong>5 pages</strong> of image selection tasks.</p>
                 <p>- Each page contains a task for <strong>1 object class name</strong> and <strong>20 candidate images</strong>.</p>
                 <p>- Select <strong>all</strong> images corresponding to the shown object class name.</p>
                 <p>- If unsure, you can use the <strong>Wikipedia link</strong>&nbsp;to learn about the object class.</p>

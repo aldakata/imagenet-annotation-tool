@@ -58,7 +58,7 @@ const AnnotationComponent: React.FC<AnnotationComponentProps> = (props) => {
           onError={() => handleError(imageNetImage)}
         />
         {state.error && <div>Error</div>}
-        {(app.debugMode || app.enableShowPoint) && state.checkedAtLeastOnce && (
+        {(app.debugMode || app.enableShowPoint || app.experimentGroup === 1) && state.checkedAtLeastOnce && (
           <Point
             x={state.ratioX * state.imageWidth + state.imageInnerX}
             y={state.ratioY * state.imageHeight + state.imageInnerY}

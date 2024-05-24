@@ -126,7 +126,7 @@ const AnnotatorPage = () => {
           :
           (
             <SubmitButton type="button" onClick={submitHandler}>
-            {state.submitting ? "Submitting..." : "Submit"}
+            {state.submitting ? "Submitting..." : "Next"}
             </SubmitButton> 
           )
       }

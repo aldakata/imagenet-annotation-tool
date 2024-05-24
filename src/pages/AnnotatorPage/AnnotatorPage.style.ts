@@ -36,6 +36,9 @@ export const Instruction = styled.div`
     color: #666;
   }
 `;
+export const TextList = styled.div`
+  text-align: left;`
+;
 
 export const Grid = styled.div`
   display: grid;

@@ -71,7 +71,7 @@ const App = () => {
               <p>- The legal basis for processing is personal consent (Art. 6 para. 1 lit. a, Art. 9 para. 2 lit. a DSGVO).</p>
               <p>- The data is completely anonymized and untraceable to the participant.</p>
               <p>- The data is collected exclusively for the purpose of this study and will only be used within this framework.</p>
-              <p>- The data will be stored at the Tübingen AI Center, University of Tübingen (Maria-von-Linden-Str. 6, 72076 Tübingen).</p>
+              <p>- The data will be stored at the University of Tübingen.</p>
               <p>- The data will only be kept for as long as it is required for the above-mentioned purpose.</p>
               <p>- Upon finishing the following tasks, you will choose whether you want to submit your data or not, without any consequences.</p>        
               <p>&nbsp;</p>

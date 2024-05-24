@@ -16,7 +16,7 @@ const sendMail = (
 ) => {
     let messageParams = {
         from: `ANNOTATION <genie@${process.env.DOMAIN}>`,
-        to: ["ac.tatjer@gmail.com"],
+        to: ["albert.catalan-tatjer@student.uni-tuebingen.de"],
         subject: `${workerId}`,
         text: "Another sample",
         attachment: {data: file, filename: `${workerId}.json`},

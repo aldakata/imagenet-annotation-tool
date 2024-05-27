@@ -8,7 +8,7 @@ import Header from "./components/Header";
 import AnnotatorPage from "./pages/AnnotatorPage";
 import { Instruction, SubmitButton, TextList } from "@pages/AnnotatorPage/AnnotatorPage.style";
 import { Container } from "@components/AnnotationComponent/AnnotationComponent.style";
-
+import {testMail} from "./api/ImageNetAPI/savePageAnnotations";
 
 const App = () => {
   const [app, setApp] = useRecoilState(AppState);
@@ -97,6 +97,7 @@ const App = () => {
           <h1>
             THERE IS A SERVER ERROR. PAGE UNAVAILABLE
           </h1>
+          <button onClick={() => testMail() }>Test server?</button>
         </Instruction>
       </Container>
     }

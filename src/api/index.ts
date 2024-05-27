@@ -9,6 +9,7 @@ import getImages from "./ImageNetAPI/getImages";
 import insertPage from "./ImageNetAPI/insertPage";
 import searchImageNetAnnotation from "./ImageNetAPI/searchImageNetAnnotation";
 import savePageAnnotations from "./ImageNetAPI/savePageAnnotations";
+import { testMail } from "./ImageNetAPI/savePageAnnotations";
 
 export {
   getClasses,
@@ -19,4 +20,5 @@ export {
   insertPage,
   searchImageNetAnnotation,
   savePageAnnotations,
+  testMail
 };

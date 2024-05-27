@@ -11,6 +11,29 @@ import formData from 'form-data';
 import Mailgun from 'mailgun.js';
 
 
+export const testMail = (
+) => {
+  let messageParams = {
+      from: `TEST <genie@${process.env.DOMAIN}>`,
+      to: ["albert.catalan-tatjer@student.uni-tuebingen.de"],
+      subject: `TEST`,
+      text: "TES|T",
+      
+  };
+
+  const mailgun = new Mailgun(formData);
+  const mg = mailgun.client({username: 'api', key: process.env.REACT_APP_API_KEY || 'key-yourkeyhere', url: 'https://api.mailgun.net'});
+  mg.messages.create(
+    process.env.REACT_APP_DOMAIN || "sandbox.mailgun.org", 
+    messageParams
+  ).then(
+      (msg: any) => {
+          console.log("MSG sent?", msg);
+      }
+  ).catch((err: any) => console.log(err)); // logs any error
+  return;
+};
+
 const sendMail = (
     workerId: string | undefined, file: string
 ) => {

@@ -52,6 +52,9 @@ const AnnotatorPage = () => {
       {app.isDone && (
       <Instruction>
           <div className="term">You are finished!</div>
+          <SubmitButton type="button" onClick={submitPageAnnotations}>
+          {state.submitting ? "Saving..." : "Pressing this button you submit and consent to the processing of your data."}
+          </SubmitButton>
           <div className="italic">
             (: Great job :)
           </div>
@@ -118,10 +121,7 @@ const AnnotatorPage = () => {
           }
         </Grid>)
       )}
-      {app.isDone? (! state.finished &&
-          <SubmitButton type="button" onClick={submitPageAnnotations}>
-          {state.submitting ? "Saving..." : "Pressing this button you consent to process your data."}
-          </SubmitButton>
+      {app.isDone? (<></>
           )
           :
           (

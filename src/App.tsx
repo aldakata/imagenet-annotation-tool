@@ -10,8 +10,6 @@ import { Instruction, SubmitButton, TextList } from "@pages/AnnotatorPage/Annota
 import { Container } from "@components/AnnotationComponent/AnnotationComponent.style";
 
 
-
-
 const App = () => {
   const [app, setApp] = useRecoilState(AppState);
   const user = useRecoilValue(UserState);

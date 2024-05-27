@@ -29,7 +29,7 @@ const App = () => {
       {(user.isAdmin || app.page === "admin") && user.id?.length > 0 && (
         <Header />
       )}
-      {( begin && app.page === "annotator" && false) ? (
+      {( begin && app.page === "annotator" ) ? (
         <AnnotatorPage />
       ) : 
       <Container>

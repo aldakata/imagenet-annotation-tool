@@ -92,8 +92,14 @@ const App = () => {
       //   <SubmitButton type="button" onClick={() => setBegin(true)}>Start
       //   </SubmitButton>
       // </Container>
-      <div>THERE IS A SERVER ERROR. PAGE UNAVAILABLE</div>
-      }
+      <Container>
+        <Instruction>
+          <h1>
+            THERE IS A SERVER ERROR. PAGE UNAVAILABLE
+          </h1>
+        </Instruction>
+      </Container>
+    }
     </>
   );
 };

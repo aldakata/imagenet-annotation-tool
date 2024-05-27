@@ -53,7 +53,7 @@ const AnnotatorPage = () => {
       <Instruction>
           <div className="term">You are finished!</div>
           <SubmitButton type="button" onClick={submitPageAnnotations}>
-          {state.submitting ? "Saving..." : "Pressing this button you submit and consent to the processing of your data."}
+          {state.submitting ? "Saving..." : "IMPORTANT: Pressing this button you submit and consent to the processing of your data."}
           </SubmitButton>
           <div className="italic">
             (: Great job :)

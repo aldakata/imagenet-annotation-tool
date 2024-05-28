@@ -91,6 +91,10 @@ const App = () => {
         </Instruction>
         <SubmitButton type="button" onClick={() => setBegin(true)}>Start
         </SubmitButton>
+        <Instruction>
+          This code is based and inspired by <a href="https://github.com/naver-ai/NeglectedFreeLunch/">NeglectedFreeLunch</a>'s ImageNet annotation tool by  
+          <a href="https://github.com/naver-ai/imagenet-annotation-tool?tab=readme-ov-file#acknowledgement"> Naver AI</a> 
+        </Instruction>
       </Container>
       // <Container>
       //   <Instruction>

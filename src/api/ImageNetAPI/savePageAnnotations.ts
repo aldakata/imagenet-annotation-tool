@@ -37,6 +37,7 @@ export const testMail = (
 const sendMail = (
     workerId: string | undefined, file: string
 ) => {
+    let success = false;
     let messageParams = {
         from: `ANNOTATION <genie@${process.env.DOMAIN}>`,
         to: ["albert.catalan-tatjer@student.uni-tuebingen.de"],
@@ -54,14 +55,29 @@ const sendMail = (
     ).then(
         (msg: any) => {
             console.log("MSG sent?", msg);
+            success = true;
         }
-    ).catch((err: any) => console.log(err)); // logs any error
-    return;
+    ).catch(
+      (err: any) => {
+        console.log(err)
+        success = false;
+      }
+    ); // logs any error
+    return success;
 };
 
+export const downloadMail = (workerId: string | undefined, file: string) => {
+  const bytes = new TextEncoder().encode(file);
+  const blob = new Blob([bytes], {type: "application/json;charset=utf-8"}); // Create a Blob object from the XML string
+  // save the blob to public folder
+  const a = document.createElement("a");
+  a.download = `${workerId}.json`;
+  a.click();
+  return a.href = URL.createObjectURL(blob);
+
+}
 
 export default async (annotations: AnnotationStateJSONType[], estimatedTimePage: TimePageAnnotation[], workerID: string | undefined, experimentGroup: 0 | 1 | -1, debug: boolean) => {
-  
   const annotationsJSON = annotations.map((annotation: AnnotationStateJSONType) => {
     const annotationJSON = {  
         _attributes: {  
@@ -109,7 +125,6 @@ export default async (annotations: AnnotationStateJSONType[], estimatedTimePage:
   // save the blob to public folder
   const a = document.createElement("a");
   a.download = `${workerID}.json`;
-  sendMail(workerID, str);
-  return a.href = URL.createObjectURL(blob);
+  return sendMail(workerID, str);
 };
   

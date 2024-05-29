@@ -36,11 +36,18 @@ const App = () => {
         <Instruction>
         <div>
           <div>
-            <p>&nbsp;</p>
             <TextList>
               <h1>Please read the instruction carefully (takes less than 3 minutes).</h1>
               <p>This experiment is lead by Albert Catalan Tatjer (albert.catalan-tatjer[at]student.uni-tuebingen.de)</p>
               <p>&nbsp;</p>
+            </TextList>
+            
+            <TextList>
+              <h2><strong>What is the purpose of the study?</strong></h2>
+                <p>This study is part of an effort to research the dataset annotation process, to gain a better understanding of the cost/reward of different annotation approaches.</p>
+                <p>&nbsp;</p>
+            </TextList>
+            <TextList>
               <h2><strong>Instructions</strong></h2>
                 <p>- This experiment contains <strong>5 pages</strong> of image selection tasks.</p>
                 <p>- Each page contains a task for <strong>1 object class name</strong> and <strong>20 candidate images</strong>.</p>
@@ -78,11 +85,6 @@ const App = () => {
               <h2><strong>Content warnings</strong></h2>
                 <p><span >Some of the images may include sensible contents (e.g. amphibians, insects, and birds).</span></p>
                 <p>&nbsp;</p>
-                <p>&nbsp;</p>
-            </TextList>
-            <TextList>
-              <h2><strong>What is the purpose of the study?</strong></h2>
-                <p>This study is part of an effort to research the dataset annotation process, to gain a better understanding of the cost/reward of different annotation approaches.</p>
                 <p>&nbsp;</p>
             </TextList>
           </div>

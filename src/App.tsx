@@ -61,6 +61,7 @@ const App = () => {
                 <p><img src={"https://hybridsupervision-image-net.s3.us-east-2.amazonaws.com/mturk-readme/selection.png"} width="400" /></p>
                 <p>- Selected images will appear with blue borders.</p>
                 <p>- If necessary, click on the image again to undo the selection.<br />
+                <p>- Images will appear blurred out, unless you hover them with your mouse.</p>
                 <br />
                 <img src={"https://hybridsupervision-image-net.s3.us-east-2.amazonaws.com/mturk-readme/drawing_negative_sample.png"} width="300" />
                 <img src={"https://hybridsupervision-image-net.s3.us-east-2.amazonaws.com/mturk-readme/drawing_positive_sample.png"} width="300" /></p>
@@ -68,7 +69,12 @@ const App = () => {
                 &nbsp;</p>
             </TextList>
             {(app.experimentGroup===1 &&
-            <TextList><h2><strong>Red pointer</strong></h2><p><img src="https://hybridsupervision-image-net.s3.us-east-2.amazonaws.com/mturk-readme/red_what.png" width="300" /></p><p>- Red pointer indicates the current position of the mouse cursor.</p><p>- Red pointer will be fixed at the position of the image where you click.</p><p>- When you click on the image again to de-select it, the red pointer will also be released.</p><p><img src="https://hybridsupervision-image-net.s3.us-east-2.amazonaws.com/mturk-readme/red_bad.png" width="300" /> <img src="https://hybridsupervision-image-net.s3.us-east-2.amazonaws.com/mturk-readme/red_good.png" width="300" /></p><p>- Try to click on the object of interest.</p><p><img src="https://hybridsupervision-image-net.s3.us-east-2.amazonaws.com/mturk-readme/red_multi.png" width="400" /></p><p>- When there are multiple objects, click on one of them.</p><p>&nbsp;</p></TextList>
+            <TextList><h2><strong>Red pointer</strong></h2><p><img src="https://hybridsupervision-image-net.s3.us-east-2.amazonaws.com/mturk-readme/red_what.png" width="300" /></p>
+            <p>- Red pointer indicates the current position of the mouse cursor.</p>
+            <p>- Red pointer will be fixed at the position of the image where you click.</p>
+            <p>- When you click on the image again to de-select it, the red pointer will also be released.</p>
+            <p>- The red pointer will persist on any image you hover, even if it is not selected.</p>
+            <p><img src="https://hybridsupervision-image-net.s3.us-east-2.amazonaws.com/mturk-readme/red_bad.png" width="300" /> <img src="https://hybridsupervision-image-net.s3.us-east-2.amazonaws.com/mturk-readme/red_good.png" width="300" /></p><p>- Try to click on the object of interest.</p><p><img src="https://hybridsupervision-image-net.s3.us-east-2.amazonaws.com/mturk-readme/red_multi.png" width="400" /></p><p>- When there are multiple objects, click on one of them.</p><p>&nbsp;</p></TextList>
             )}
             <TextList>
             <h2><strong><span>Important n</span><span>otes on data collection</span></strong></h2>
